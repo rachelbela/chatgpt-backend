@@ -1,12 +1,11 @@
 import { Hono } from 'hono'
-import { etag } from 'hono/etag'
 import { logger } from 'hono/logger'
 import chat from './chat'
 import books from './books'
 import { showRoutes } from 'hono/dev'
 import { HTTPException } from 'hono/http-exception'
 const app = new Hono()
-app.use(etag(), logger())
+app.use(logger())
 
 app.route('/chat', chat)
 app.route('/books', books)

@@ -26,6 +26,7 @@ app.post('/', async (c) => {
             baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1"
         }
     );
+    c.header('Content-Encoding', 'Identity')
     return streamText(c, async (stream) => {
         const completions = await openai.chat.completions.create({
             model: "deepseek-r1",  // 此处以 deepseek-r1 为例，可按需更换模型名称。
